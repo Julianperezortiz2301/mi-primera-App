@@ -1,0 +1,55 @@
+.todo-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #f9f9f9;
+  padding: 6px 10px;
+  margin: 5px 0;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 600px;
+  margin: 5px auto;
+}
+
+/* Estilo cuando la tarea está completada */
+.todo-item.completed {
+  background-color: #e8f5e9; /* Fondo verde claro */
+}
+
+.todo-item.completed p {
+  text-decoration: line-through; /* Tachar el texto */
+  color: #4caf50; /* Verde para las tareas completadas */
+}
+
+/* Texto del ítem */
+.todo-item p {
+  flex: 1;
+  margin: 0 10px;
+  font-size: 14px;
+  color: #333;
+}
+
+/* Estilo de los botones de completar y eliminar */
+.todo-item .todo-complete,
+.todo-item .todo-delete {
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.todo-item .todo-complete {
+  color: #bbb;
+}
+
+.todo-item .todo-complete:hover {
+  color: #4caf50;
+}
+
+.todo-item .todo-delete {
+  color: #f44336;
+}
+
+.todo-item .todo-delete:hover {
+  color: #d32f2f;
+}

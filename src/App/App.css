@@ -1,0 +1,28 @@
+.App {
+  text-align: center;
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  height: 100vh; /* Asegura que ocupe toda la altura de la pantalla */
+  flex-direction: column; /* Apila los elementos verticalmente */
+  background-color: #f9f9f9; /* Fondo claro para contraste */
+}
+
+.App-header {
+  min-height: 60vh; /* Asigna una altura mínima al contenedor */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%; /* Asegura que el contenedor ocupe todo el ancho */
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-link {
+  color: #61dafb;
+}

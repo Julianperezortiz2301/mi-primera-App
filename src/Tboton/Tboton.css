@@ -1,0 +1,30 @@
+/* Estilos para la sección de agregar tareas */
+.add-todo-container {
+  display: flex;
+  justify-content: center; /* Centrado horizontal */
+  align-items: center; /* Centrado vertical */
+  margin-top: 10px;
+  width: 100%;
+}
+
+.add-todo-input {
+  padding: 6px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  margin-right: 6px;
+  width: 220px;
+}
+
+.add-todo-button {
+  padding: 6px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-todo-button:hover {
+  background-color: #0056b3;
+}

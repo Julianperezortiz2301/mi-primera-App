@@ -1,0 +1,15 @@
+/* Estilo general de la lista de tareas */
+.todo-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px auto; /* Centramos la lista */
+  width: 90%; /* Limitar el ancho de la lista */
+  max-width: 600px; /* Ancho máximo para evitar que se haga demasiado ancha */
+  border: none;
+  background-color: #fff;
+  box-shadow: none;
+}
+
+.todo-list li:not(:last-child) {
+  border-bottom: 1px solid #ddd;
+}
