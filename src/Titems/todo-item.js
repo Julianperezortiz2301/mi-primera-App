@@ -1,31 +1,20 @@
-import './Titems.css';
-
-
-
-
-
-
+import "./Titems.css";
 
 function TodoItem({ text, completed, onToggleComplete, onDelete }) {
   return (
-    <li className={`todo-item ${completed ? 'completed' : ''}`}>
-      {/* Chulo para marcar como completado */}
+    <li className={`todo-item ${completed ? "completed" : ""}`}>
       <span
         className="todo-complete"
-        onClick={onToggleComplete} // Llama a la función al hacer clic
-        style={{ cursor: 'pointer' }} // Hace que el cursor sea interactivo
+        onClick={onToggleComplete}
+        style={{ cursor: "pointer" }}
       >
-        {completed ? '✔' : '○'} {/* Si está completado, muestra un chulo */}
+        {completed ? "✔" : "○"}
       </span>
-
-      {/* Texto del ítem */}
       <p>{text}</p>
-
-      {/* Botón de eliminar */}
       <span
         className="todo-delete"
-        onClick={onDelete} // Llama a la función al hacer clic
-        style={{ cursor: 'pointer', marginLeft: '10px', color: 'red' }}
+        onClick={onDelete}
+        style={{ cursor: "pointer", marginLeft: "10px", color: "red" }}
       >
         ✗
       </span>
@@ -33,8 +22,4 @@ function TodoItem({ text, completed, onToggleComplete, onDelete }) {
   );
 }
 
-
-
-
-
-export {TodoItem};
+export { TodoItem };

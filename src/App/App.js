@@ -6,86 +6,52 @@ import { TodoList } from "../Tlist/todo-list";
 import { TodoItem } from "../Titems/todo-item";
 import { Todoboton } from "../Tboton/todo-boton";
 import { useLocalStorage } from "./localStorage";
-
-
-
-// const [todos, setTodos] = React.useState([
-//   { id: 1, Text: "Actividad1", completed: true },
-//   { id: 2, Text: "Actividad2", completed: false },
-//   { id: 3, Text: "Actividad3", completed: true },
-//   { id: 4, Text: "Actividad4", completed: false },
-// ]);
-
-//   localStorage.removeItem("TODOS");
-//   localStorage.setItem("TODOS", JSON.stringify(todos));// Guardar los datos en local storage
-
-
-
-
-
-
-
-
-
-
-
-
+import Loading from "../loading/loading.js";
+import Error from "../loading/error.js";
 
 function App() {
+  const [todos, saveTodos, error, loading] = useLocalStorage("TODOS", []);
+  const [searchValue, setSearchValue] = React.useState("");
 
- 
-    
-    const [todos, saveTodos] = useLocalStorage("TODOS",[]);
-    
-    
-    
- 
-
-  const [searchValue, setSearchValue] = React.useState(""); // Estado para manejar la búsqueda
-
-  // Filtrar tareas según el valor de búsqueda
   const searchedTodos = todos.filter((todo) =>
     todo.Text.toLowerCase().includes(searchValue.toLowerCase())
   );
 
-  // Alternar estado de completado
   const toggleComplete = (id) => {
-    saveTodos((prevTodos) =>
-      prevTodos.map((todo) =>
+    saveTodos(
+      todos.map((todo) =>
         todo.id === id ? { ...todo, completed: !todo.completed } : todo
       )
     );
   };
 
-  // Eliminar tarea
   const deleteTodo = (id) => {
-    saveTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+    saveTodos(todos.filter((todo) => todo.id !== id));
   };
 
-  // Agregar nueva tarea
   const addTodo = (text) => {
-    if (text.trim() === "") return; // No permitir agregar tareas vacías
+    if (text.trim() === "") return;
     const newTodo = {
-      id: todos.length + 1, // Generar ID único
+      id: todos.length + 1,
       Text: text,
       completed: false,
     };
-    saveTodos((prevTodos) => [...prevTodos, newTodo]);
+    saveTodos([...todos, newTodo]);
   };
 
   return (
     <>
-      {/* Contador de tareas completadas y totales */}
       <TodoCounter
         completed={todos.filter((todo) => todo.completed).length}
         total={todos.length}
       />
-
-      {/* Componente de búsqueda */}
       <TodoSearch searchValue={searchValue} setSearchValue={setSearchValue} />
-
-      {/* Componente de lista de tareas */}
       <TodoList>
+        {error && <Error errorMessage="Hubo un problema al cargar los datos." />}
+        {loading && <Loading />}
+        {!loading && searchedTodos.length === 0 && (
+          <p className="message">No hay tareas por mostrar...</p>
+        )}
         {searchedTodos.map((todo) => (
           <TodoItem
             key={todo.id}
@@ -96,10 +62,9 @@ function App() {
           />
         ))}
       </TodoList>
-
-      {/* Componente de agregar tarea */}
       <Todoboton addTodo={addTodo} />
     </>
   );
 }
+
 export default App;
